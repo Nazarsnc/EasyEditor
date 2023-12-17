@@ -1,0 +1,44 @@
+from PIL import Image
+from PIL import ImageFilter
+from PIL import ImageEnhance
+with Image.open('cat_pil.jpg') as pic_original:
+    print("Зозмір картинки", pic_original.size)
+    print("Формат картинки", pic_original.format)
+    print("Тип картинки", pic_original.mode)
+    #pic_original.show()
+
+    pic_gray = pic_original.convert('L')
+    pic_gray.save('gray.jpg')
+    print("Зозмір картинки", pic_gray.size)
+    print("Формат картинки", pic_gray.format)
+    print("Тип картинки", pic_gray.mode)
+    # pic_gray.show()
+
+    pic_blured = pic_original.filter(ImageFilter.BoxBlur(10))
+    pic_blured.save('blured.jpg')
+    print("Зозмір картинки", pic_blured.size)
+    print("Формат картинки", pic_blured.format)
+    print("Тип картинки", pic_blured.mode)
+    # pic_blured.show()
+
+    pic_mirrow = pic_original.transpose(Image.FLIP_LEFT_RIGHT)
+    pic_mirrow.save('mirrow.jpg')
+    print("Зозмір картинки", pic_mirrow.size)
+    print("Формат картинки", pic_mirrow.format)
+    print("Тип картинки", pic_mirrow.mode)
+    #pic_mirrow.show()
+
+    pic_left = pic_original.transpose(Image.ROTATE_90)
+    pic_left.save('left.jpg')
+    print("Зозмір картинки", pic_left.size)
+    print("Формат картинки", pic_left.format)
+    print("Тип картинки", pic_left.mode)
+    #pic_left.show()
+
+    pic_contrast = ImageEnhance.Contrast(pic_original)
+    pic_contrast = pic_contrast.enhance(5)
+    pic_contrast.save('contrast.jpg')
+    print("Зозмір картинки", pic_contrast.size)
+    print("Формат картинки", pic_contrast.format)
+    print("Тип картинки", pic_contrast.mode)
+    #pic_contrast.show()
